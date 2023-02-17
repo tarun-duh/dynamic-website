@@ -61,7 +61,8 @@ body {
 .hero-img {
   position: relative;
   flex: 1;
-  flex-basis: 25rem;
+  flex-basis: 20rem;
+  overflow: hidden;
 }
 
 .hero-img img {
