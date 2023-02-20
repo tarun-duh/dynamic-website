@@ -1,3 +1,6 @@
+let controller;
+let slideScene;
+
 function animateSlides() {
   controllers = new ScrollMagic.Controller();
   const sliders = document.querySelectorAll(".slide");
@@ -12,8 +15,22 @@ function animateSlides() {
       defaults: { duration: 1, ease: "power2.inOut" },
     });
     slideT1.fromTo(revealImg, { x: "0%" }, { x: "100%" });
-    slideT1.fromTo(img, { scale: "2" }, { scale: "1" });
-    slideT1.fromTo(reavealText, { x: "0%" }, { x: "100%" });
+    slideT1.fromTo(img, { scale: 2 }, { scale: 1 }, "-=1");
+    slideT1.fromTo(reavealText, { x: "0%" }, { x: "100%" }, "-=0.75");
+    slideT1.fromTo(nav, { y: "-130%" }, { y: "0" }, "-=0.75");
+    //scene
+    slideScene = ScrollMagic.Scene({
+      triggerElement: slide,
+      tiggerHook: 0.25,
+      reverse: false,
+    })
+      .setTween(slideT1)
+      .addIdicator({
+        colorStart: "white",
+        colorTrigger: "white",
+        name: "slide",
+      })
+      .addto(controller);
   });
 }
 animateSlides();
